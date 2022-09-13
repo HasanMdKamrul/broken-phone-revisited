@@ -6,7 +6,7 @@ const loadPhones = async(searchText, dataLimit) =>{
 }
 
 const displayPhones = (phones, dataLimit) =>{
-    console.log(phones)
+    // console.log(phones)
     const phonesContainer = document.getElementById('phones-container');
     // phonesContainer.textContent = '';
     // display 10 phones only 
@@ -30,7 +30,7 @@ const displayPhones = (phones, dataLimit) =>{
     }
     // display all phones
     phones.forEach(phone =>{
-        console.log(phone)
+        // console.log(phone)
         
         const phoneDiv  = document.createElement('div');
         phoneDiv.classList.add('col');
@@ -88,17 +88,21 @@ document.getElementById('btn-show-all').addEventListener('click', function(){
 })
 
 const loadPhoneDetails = async id =>{
-    const url =`www.openapi.programming-hero.com/api/phone/${id}`;
+    // console.log(id)
+    const url =`https://openapi.programming-hero.com/api/phone/${id}`;
     const res = await fetch(url);
     const data = await res.json();
     displayPhoneDetails(data.data);
 }
 
 const displayPhoneDetails = phone =>{
-    console.log(phone);
+    console.log(phone.name);
     const modalTitle = document.getElementById('phoneDetailModalLabel');
-    modalTitle.innerText = phone.name;
+    modalTitle.classList.add('text-dark')
+    modalTitle.innerHTML = `${phone.name}`
+    // modalTitle.innerText = phone.name;
     const phoneDetails = document.getElementById('phone-details');
+    phoneDetails.classList.add('text-dark')
     console.log(phone.mainFeatures.sensors[0]);
     phoneDetails.innerHTML = `
         <p>Release Date: ${phone.releaseDate}</p>
