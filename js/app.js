@@ -97,6 +97,7 @@ const loadPhoneDetails = async id =>{
 
 const displayPhoneDetails = phone =>{
     console.log(phone.name);
+    console.log(phone)
     const modalTitle = document.getElementById('phoneDetailModalLabel');
     modalTitle.classList.add('text-dark')
     modalTitle.innerHTML = `${phone.name}`
@@ -106,7 +107,7 @@ const displayPhoneDetails = phone =>{
     console.log(phone.mainFeatures.sensors[0]);
     phoneDetails.innerHTML = `
         <p>Release Date: ${phone.releaseDate}</p>
-        <p>Storage: ${phone.mainFeatures}</p>
+        <p>Storage: ${phone?.mainFeatures?.storage}</p>
         <p>Others: ${phone.others ? phone.others.Bluetooth : 'No Bluetooth Information'}</p>
         <p>Sensor: ${phone.mainFeatures.sensors ? phone.mainFeatures.sensors[0] : 'no sensor'}</p>
     `
