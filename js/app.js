@@ -65,6 +65,11 @@ const processSearch = (dataLimit) =>{
     document.getElementById('search-field').value = ``
    
 }
+// ** handle search on enter
+
+document.getElementById('search-field').addEventListener('keypress',(event)=>{
+    event.key === 'Enter' && processSearch(10);
+})
 
 // handle search button click
 document.getElementById('btn-search').addEventListener('click', function(){
