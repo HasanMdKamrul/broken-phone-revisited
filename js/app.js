@@ -1,5 +1,8 @@
 const loadPhones = async(searchText, dataLimit) =>{
-    const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`
+   
+    // ** get the value from ls
+    const savedSearchText = localStorage.getItem('saveText');
+    const url = `https://openapi.programming-hero.com/api/phones?search=${searchText ? searchText : savedSearchText}`
     const res = await fetch(url);
     const data = await res.json();
     displayPhones(data.data, dataLimit);
@@ -57,6 +60,10 @@ const processSearch = (dataLimit) =>{
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
     loadPhones(searchText, dataLimit);
+    // ** set the search text to LS
+    localStorage.setItem('saveText',searchText);
+    document.getElementById('search-field').value = ``
+   
 }
 
 // handle search button click
